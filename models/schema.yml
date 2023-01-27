@@ -32,3 +32,28 @@ models:
         description: '{{ doc("dim_listing_cleansed__minimum_nights") }}'
         tests:
           - positive_value
+    
+  - name: dim_hosts_cleansed
+    columns:
+
+      - name: host_id
+        tests:
+          - not_null
+          - unique
+
+      - name: host_name
+        tests:
+          - not_null
+          
+      - name: is_superhost
+        tests:
+          - accepted_values:
+              values: ['t','f']
+
+      - name: created_at
+        tests:
+          - not_null
+
+      - name: updated_at
+        tests:
+          - not_null
